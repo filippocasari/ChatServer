@@ -25,4 +25,4 @@ SpawningThread.java [num_threads]
  This value is set to 3 by default if the user does not provide any arguments.
 ## Exercise 4
 The server handles multi clients by using multithreading style. It starts a new thread whether a new client would communicate with the running server. 
-
+Every client has his own id created randomly. The program allows at most 1000 clients.  

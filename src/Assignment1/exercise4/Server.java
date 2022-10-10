@@ -54,9 +54,7 @@ public class Server {
         }
         Server server = new Server(Integer.parseInt(args[0]));
 
-
         System.out.println("Server shutting down...");
-
 
     }
 

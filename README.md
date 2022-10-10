@@ -26,3 +26,7 @@ SpawningThread.java [num_threads]
 ## Exercise 4
 The server handles multi clients by using multithreading style. It starts a new thread whether a new client would communicate with the running server. 
 Every client has his own id created randomly. The program allows at most 1000 clients.  
+You can run multiple clients in 3 ways:
+- by manually launching many times' client.java program
+- by launching multi clients java code
+- by terminals with the command provided in the first exercise

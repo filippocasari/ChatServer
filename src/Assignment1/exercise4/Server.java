@@ -8,12 +8,13 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Random;
 
 public class Server {
     private ServerSocket server = null;
 
     private BufferedReader in = null;
-
+    public Socket s;
 
     public Server(int port) throws IOException {
         try {
@@ -22,11 +23,14 @@ public class Server {
             System.out.println("Server started");
             while(true){
 
-                Socket socket = server.accept();
-                System.out.println("Just connected with " + server.getInetAddress());
+                s = server.accept();
+                Random num = new Random();
+                int id = num.nextInt();
+                System.out.println("connection Established");
+                System.out.println("Just connected with the id client " + id);
 
-                Runnable r = new HandlingClientThread(socket);
-                new Thread(r).start();
+                Thread r = new HandlingClientThread(s, id);
+                r.start();
 
             }
 

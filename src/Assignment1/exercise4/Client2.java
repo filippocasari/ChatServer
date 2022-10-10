@@ -1,13 +1,10 @@
 package Assignment1.exercise4;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Client {
+public class Client2 {
 
     private final String ip;
     private final int port;
@@ -15,7 +12,7 @@ public class Client {
     private BufferedReader is;
     Socket socket;
 
-    public Client(String ip, int port) throws IOException {
+    public Client2(String ip, int port) throws IOException {
         this.port = port;
         this.ip = String.valueOf(ip);
 
@@ -30,19 +27,16 @@ public class Client {
             System.out.println("Client is trying to connect to " + this.ip + ":" + this.port);
             Scanner scanner = new Scanner(System.in);
             String inputString = "";
-            while(!inputString.equals("end\n"))
-             {
+            while (!inputString.equals("end")) {
                 inputString = scanner.nextLine();
+                System.out.println("input string: " + inputString);
                 os.writeBytes(inputString + "\n");
                 os.flush();
-                int read;
-                System.out.println(inputString);
-                while ((read = socket.getInputStream().read()) > -1) {
-                    System.out.print((char) read);
-                }
+                System.out.println(is.readLine());
+                System.out.println("Insert another string");
 
-            };
-
+            }
+            ;
 
 
         } catch (Exception e) {
@@ -56,7 +50,7 @@ public class Client {
             System.out.println("Usage: server [ip][port]");
             System.exit(0);
         }
-        Client client = new Client(args[0], Integer.parseInt(args[1]));
+        Client2 client = new Client2(args[0], Integer.parseInt(args[1]));
         client.readServerResponse();
 
         System.out.println("Server shutting down...");

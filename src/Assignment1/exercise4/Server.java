@@ -5,24 +5,33 @@ import java.io.IOException;
 
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Server {
     private ServerSocket server = null;
 
     private BufferedReader in = null;
     public Socket s;
+    private final int min = 0;
+    private final int max = 1000;
 
     public Server(int port) throws IOException {
+        List<Integer> list_clients = new ArrayList<Integer>();
         try {
 
             server = new ServerSocket(port);
             System.out.println("Server started");
-            while(true){
+            while (true) {
 
                 s = server.accept();
-                Random num = new Random();
-                int id = num.nextInt();
+
+                int id;
+                id = min + (int) (Math.random() * ((max - min) + 1));
+                while (list_clients.contains(id)) {
+                    id = min + (int) (Math.random() * ((max - min) + 1));
+                }
+                list_clients.add(id);
                 System.out.println("connection Established");
                 System.out.println("Just connected with the id client " + id);
 
@@ -36,7 +45,6 @@ public class Server {
         }
         server.close();
     }
-
 
 
     public static void main(String[] args) throws IOException {

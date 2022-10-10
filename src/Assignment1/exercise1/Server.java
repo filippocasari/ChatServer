@@ -3,7 +3,6 @@ package Assignment1.exercise1;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Arrays;
 
 public class Server {
     private ServerSocket server = null;
@@ -22,15 +21,11 @@ public class Server {
             out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             System.out.println("Waiting for a client ...");
 
-            // What shall we put here?
-            ////////////////////
             System.out.println("Just connected to " + server.getLocalSocketAddress());
 
             System.out.println("Client says: " + in.readLine());
 
-
             System.out.println("Closing connection");
-            /////////////////
             in.close();
             out.close();
             socket.close();
@@ -46,7 +41,6 @@ public class Server {
             System.exit(0);
         }
         Server server = new Server(Integer.parseInt(args[0]));
-
 
         System.out.println("Server shutting down...");
 

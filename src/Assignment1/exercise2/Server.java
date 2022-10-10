@@ -23,7 +23,7 @@ public class Server {
             PrintWriter out = new PrintWriter(socket.getOutputStream());
             System.out.println("Client says: " + in.readLine());
             // Write out our header to the client
-            out.println("Server here. I have received your message!");
+            out.println("Server here. I have received your message! [ACK]");
             out.flush();
 
 

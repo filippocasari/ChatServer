@@ -6,7 +6,6 @@ import java.io.IOException;
 
 import java.io.InputStreamReader;
 import java.net.Socket;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Client {
@@ -20,14 +19,6 @@ public class Client {
     public Client(String ip, int port) throws IOException {
         this.port = port;
         this.ip = String.valueOf(ip);
-
-        //System.out.println(responseLine);
-        //System.out.println("Server Sent: " + responseLine);
-
-        //in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-        //System.out.println(in.readLine());
-
 
     }
 

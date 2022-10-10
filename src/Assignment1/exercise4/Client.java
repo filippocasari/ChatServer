@@ -1,12 +1,10 @@
-package Assignment1.exercise2;
+package Assignment1.exercise4;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
-
 import java.io.InputStreamReader;
 import java.net.Socket;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Client {
@@ -21,13 +19,6 @@ public class Client {
         this.port = port;
         this.ip = String.valueOf(ip);
 
-        //System.out.println(responseLine);
-        //System.out.println("Server Sent: " + responseLine);
-
-        //in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-        //System.out.println(in.readLine());
-
 
     }
 
@@ -38,18 +29,25 @@ public class Client {
             is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             System.out.println("Client is trying to connect to " + this.ip + ":" + this.port);
             Scanner scanner = new Scanner(System.in);
-            String inputString = scanner.nextLine();
-            os.writeBytes(inputString + "\n");
-            os.flush();
-            int read;
+            String inputString = "";
+            while(!inputString.equals("end\n"))
+             {
+                inputString = scanner.nextLine();
+                os.writeBytes(inputString + "\n");
+                os.flush();
+                int read;
+                System.out.println(inputString);
+                while ((read = socket.getInputStream().read()) > -1) {
+                    System.out.print((char) read);
+                }
 
-            while ((read = socket.getInputStream().read()) > -1) {
-                System.out.print((char) read);
-            }
+            };
+
+
+
         } catch (Exception e) {
             System.err.println("something went wrong");
         }
-
 
     }
 

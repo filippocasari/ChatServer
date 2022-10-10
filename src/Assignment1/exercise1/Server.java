@@ -26,7 +26,7 @@ public class Server {
             ////////////////////
             System.out.println("Just connected to " + server.getLocalSocketAddress());
 
-            System.out.println("Client says: "+in.readLine());
+            System.out.println("Client says: " + in.readLine());
 
 
             System.out.println("Closing connection");
@@ -48,9 +48,7 @@ public class Server {
         Server server = new Server(Integer.parseInt(args[0]));
 
 
-
         System.out.println("Server shutting down...");
-
 
 
     }

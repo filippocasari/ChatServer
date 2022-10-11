@@ -30,4 +30,6 @@ You can run multiple clients in 3 ways:
 - by manually launching many times' client.java program
 - by launching multi clients java code
 - by terminals with the command provided in the first exercise
-
+Is this the only way to handle multiple connections at the same time? Reflect on possible alternatives.
+- **Single-thread model**: One thread receives requests, executes them and replies to the clients
+- **Finite-state machine model**: One thread executes requests and replies, if execution is quick. Multiple requests are handled simultaneously
